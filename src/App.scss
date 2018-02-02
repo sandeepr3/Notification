@@ -1,0 +1,23 @@
+.App {
+ 
+}
+
+.App-header {
+  font-size: 25px;
+}
+
+// .app-record {
+//   border: 1px solid #009688;
+// }
+.Read{
+  background-color: #fff;
+  
+}
+.notRead{  
+   background-color:#D3D3D3 ;
+   }
+.md-cell {
+    // width: fit-content;
+    width: calc(33.33333% - 120px);
+    margin: 8px;
+}

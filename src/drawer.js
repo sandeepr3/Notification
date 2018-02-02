@@ -1,0 +1,60 @@
+import React, { PureComponent } from 'react';
+import { Button, Drawer, Toolbar } from 'react-md';
+
+// import inboxListItems from 'constants/inboxListItems';
+
+export default class App extends PureComponent {
+  state = { visible: false, position: 'left' };
+
+  openDrawerLeft = () => {
+    this.setState({ visible: true, position: 'left' });
+  };
+
+  openDrawerRight = () => {
+    this.setState({ visible: true, position: 'right' });
+  };
+
+  closeDrawer = () => {
+    this.setState({ visible: false });
+  };
+
+  handleVisibility = (visible) => {
+    this.setState({ visible });
+  };
+
+  render() {
+    const { visible, position } = this.state;
+    const isLeft = position === 'left';
+
+    const closeBtn = <Button icon onClick={this.closeDrawer}>{isLeft ? 'arrow_back' : 'close'}</Button>;
+    return (
+      <div>
+        <Button raised onClick={this.openDrawerLeft}>
+          Open Drawer Left
+        </Button>
+        <Button raised onClick={this.openDrawerRight}>
+          Open Drawer Right
+        </Button>
+        <Drawer
+          id="simple-drawer-example"
+          type={Drawer.DrawerTypes.TEMPORARY}
+          visible={visible}
+          position={position}
+          onVisibilityChange={this.handleVisibility}
+          navItems={[ [<i class="md-icon material-icons">inbox</i>, {
+    divider: true,
+    subheader: true,
+    primaryText: "node"
+  }],<h3>asas</h3>,<h3>asas</h3>,<h3>asas</h3>,]}
+          header={(
+            <Toolbar
+              nav={isLeft ? null : closeBtn}
+              actions={isLeft ? closeBtn : null}
+              className="md-divider-border md-divider-border--bottom"
+            />
+          )}
+        />
+      </div>
+    );
+  }
+}
